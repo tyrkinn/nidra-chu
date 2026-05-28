@@ -1,27 +1,165 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Illustration } from "../illustrations";
-import { getSession } from "../data/sessions";
+import { getSession, type Session as SessionType, type Stage } from "../data/sessions";
 import { Timer } from "../components/Timer";
 import { BackIcon, NextIcon, PauseIcon, PlayIcon, PrevIcon } from "../components/Icons";
+
+type Mode = "overview" | "play" | "done";
+
+const fmtMin = (sec: number) => {
+  const m = Math.round(sec / 60);
+  return `${m} мин`;
+};
+
+const fmtMinSec = (sec: number) => {
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  return s === 0 ? `${m} мин` : `${m}:${s.toString().padStart(2, "0")}`;
+};
 
 export function Session() {
   const { id = "" } = useParams();
   const navigate = useNavigate();
   const session = getSession(id);
 
+  const [mode, setMode] = useState<Mode>("overview");
   const [stageIndex, setStageIndex] = useState(0);
-  const [remaining, setRemaining] = useState(session?.stages[0]?.durationSec ?? 0);
-  const [running, setRunning] = useState(false);
-  const [finished, setFinished] = useState(false);
+
+  if (!session) {
+    return (
+      <div className="container fade-in">
+        <p>Практика не найдена.</p>
+        <button className="ctrl-primary" onClick={() => navigate("/")}>На главную</button>
+      </div>
+    );
+  }
+
+  if (mode === "overview") {
+    return (
+      <Overview
+        session={session}
+        onStart={() => {
+          setStageIndex(0);
+          setMode("play");
+        }}
+      />
+    );
+  }
+
+  if (mode === "done") {
+    return (
+      <Completion
+        session={session}
+        onRestart={() => {
+          setStageIndex(0);
+          setMode("play");
+        }}
+        onOverview={() => setMode("overview")}
+      />
+    );
+  }
+
+  return (
+    <Player
+      session={session}
+      stageIndex={stageIndex}
+      onIndexChange={setStageIndex}
+      onExit={() => setMode("overview")}
+      onComplete={() => setMode("done")}
+    />
+  );
+}
+
+// ──────────────────────────────────────────
+// Overview
+// ──────────────────────────────────────────
+
+function Overview({ session, onStart }: { session: SessionType; onStart: () => void }) {
+  const total = session.stages.reduce((sum, s) => sum + s.durationSec, 0);
+
+  return (
+    <div className="container fade-in">
+      <div className="session-top">
+        <Link to="/section/nidra" className="back-link"><BackIcon /> Назад</Link>
+        <span className="session-progress">{fmtMin(total)} · {session.stages.length} шаг{plural(session.stages.length)}</span>
+      </div>
+
+      <header className="overview-hero">
+        <div className="overview-hero-art" aria-hidden="true">
+          <Illustration kind={session.hero} />
+        </div>
+        <div>
+          <span className="eyebrow">Йога-нидра</span>
+          <h1>{session.title}</h1>
+          <p>{session.subtitle}</p>
+        </div>
+      </header>
+
+      <div className="section-title">
+        <h2>Шаги практики</h2>
+        <span className="eyebrow">прочитать</span>
+      </div>
+
+      <ol className="overview-list">
+        {session.stages.map((stage, i) => (
+          <li key={stage.id} className="overview-step">
+            <div className="overview-step-art" aria-hidden="true">
+              <Illustration kind={stage.illustration} />
+            </div>
+            <div className="overview-step-body">
+              <div className="overview-step-head">
+                <span className="overview-step-num">{i + 1}</span>
+                <span className="overview-step-eyebrow">{stage.eyebrow}</span>
+                <span className="overview-step-time">{fmtMinSec(stage.durationSec)}</span>
+              </div>
+              <h3>{stage.title}</h3>
+              <p>{stage.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+
+      <div className="overview-cta">
+        <button className="ctrl-primary" onClick={onStart}>
+          <span style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
+            <PlayIcon /> Начать практику
+          </span>
+        </button>
+        <p className="overview-hint">Найдите удобное положение. Приглушите свет и звуки.</p>
+      </div>
+    </div>
+  );
+}
+
+// ──────────────────────────────────────────
+// Player
+// ──────────────────────────────────────────
+
+function Player({
+  session,
+  stageIndex,
+  onIndexChange,
+  onExit,
+  onComplete,
+}: {
+  session: SessionType;
+  stageIndex: number;
+  onIndexChange: (i: number) => void;
+  onExit: () => void;
+  onComplete: () => void;
+}) {
+  const stage = session.stages[stageIndex] as Stage;
+
+  const [remaining, setRemaining] = useState(stage.durationSec);
+  const [running, setRunning] = useState(true);
   const tickRef = useRef<number | null>(null);
 
-  const stage = session?.stages[stageIndex];
-
+  // reset timer on stage change
   useEffect(() => {
-    if (!stage) return;
     setRemaining(stage.durationSec);
-  }, [stage]);
+    setRunning(true);
+  }, [stage.durationSec, stage.id]);
 
   useEffect(() => {
     if (!running) {
@@ -52,88 +190,45 @@ export function Session() {
   }, [running]);
 
   const isLast = useMemo(
-    () => !!session && stageIndex === session.stages.length - 1,
-    [session, stageIndex],
+    () => stageIndex === session.stages.length - 1,
+    [session.stages.length, stageIndex],
   );
 
   function advance() {
-    if (!session) return;
     if (isLast) {
       setRunning(false);
-      setFinished(true);
+      onComplete();
       return;
     }
-    setStageIndex((i) => i + 1);
+    onIndexChange(stageIndex + 1);
   }
 
   function back() {
     if (stageIndex === 0) return;
-    setStageIndex((i) => i - 1);
-  }
-
-  function toggle() {
-    if (finished) {
-      restart();
-      return;
-    }
-    setRunning((r) => !r);
-  }
-
-  function restart() {
-    setStageIndex(0);
-    setRemaining(session?.stages[0]?.durationSec ?? 0);
-    setFinished(false);
-    setRunning(true);
-  }
-
-  if (!session) {
-    return (
-      <div className="container fade-in">
-        <p>Практика не найдена.</p>
-        <button className="ctrl-primary" onClick={() => navigate("/")}>На главную</button>
-      </div>
-    );
-  }
-
-  if (finished) {
-    return (
-      <div className="container fade-in session-page">
-        <div className="session-top">
-          <Link to="/" className="back-link"><BackIcon /> Назад</Link>
-        </div>
-        <div className="complete-card">
-          <div className="complete-art drift" aria-hidden="true">
-            <Illustration kind="awakening" />
-          </div>
-          <span className="eyebrow">Практика завершена</span>
-          <h2>{session.title}</h2>
-          <p>Возьмите паузу, прежде чем вернуться к делам. Сделайте несколько глубоких вдохов и сохраните это состояние.</p>
-          <button className="ctrl-primary" onClick={restart}>Начать заново</button>
-          <Link to="/" className="back-link" style={{ marginTop: 8 }}>К списку практик</Link>
-        </div>
-      </div>
-    );
+    onIndexChange(stageIndex - 1);
   }
 
   return (
     <div className="container session-page">
       <div className="session-top">
-        <Link to="/" className="back-link"><BackIcon /> Назад</Link>
+        <button onClick={onExit} className="back-link" aria-label="К обзору шагов">
+          <BackIcon /> Обзор
+        </button>
         <span className="session-progress">
           {stageIndex + 1} / {session.stages.length}
         </span>
       </div>
 
-      <div key={stage!.id} className="session-stage fade-in">
+      <div key={stage.id} className="session-stage fade-in">
         <div className="stage-art breathe" aria-hidden="true">
-          <Illustration kind={stage!.illustration} />
+          <Illustration kind={stage.illustration} />
         </div>
         <div>
-          <div className="stage-eyebrow">{stage!.eyebrow}</div>
-          <h2 className="stage-title">{stage!.title}</h2>
+          <div className="stage-eyebrow">{stage.eyebrow}</div>
+          <h2 className="stage-title">{stage.title}</h2>
         </div>
-        <p className="stage-body">{stage!.body}</p>
-        <Timer total={stage!.durationSec} remaining={remaining} />
+        <p className="stage-body">{stage.body}</p>
+        <Timer total={stage.durationSec} remaining={remaining} />
       </div>
 
       <div className="stage-dots" aria-hidden="true">
@@ -156,7 +251,7 @@ export function Session() {
         </button>
         <button
           className={`ctrl-primary ${running ? "" : "is-paused"}`}
-          onClick={toggle}
+          onClick={() => setRunning((r) => !r)}
           aria-label={running ? "Пауза" : "Старт"}
         >
           {running ? (
@@ -165,7 +260,7 @@ export function Session() {
             </span>
           ) : (
             <span style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
-              <PlayIcon /> {remaining === stage!.durationSec ? "Начать" : "Продолжить"}
+              <PlayIcon /> Продолжить
             </span>
           )}
         </button>
@@ -179,4 +274,44 @@ export function Session() {
       </div>
     </div>
   );
+}
+
+// ──────────────────────────────────────────
+// Completion
+// ──────────────────────────────────────────
+
+function Completion({
+  session,
+  onRestart,
+  onOverview,
+}: {
+  session: SessionType;
+  onRestart: () => void;
+  onOverview: () => void;
+}) {
+  return (
+    <div className="container fade-in session-page">
+      <div className="session-top">
+        <Link to="/section/nidra" className="back-link"><BackIcon /> Назад</Link>
+      </div>
+      <div className="complete-card">
+        <div className="complete-art drift" aria-hidden="true">
+          <Illustration kind="awakening" />
+        </div>
+        <span className="eyebrow">Практика завершена</span>
+        <h2>{session.title}</h2>
+        <p>Возьмите паузу, прежде чем вернуться к делам. Сделайте несколько глубоких вдохов и сохраните это состояние.</p>
+        <button className="ctrl-primary" onClick={onRestart}>Начать заново</button>
+        <button className="back-link" onClick={onOverview} style={{ marginTop: 8 }}>К обзору шагов</button>
+      </div>
+    </div>
+  );
+}
+
+function plural(n: number): string {
+  const mod10 = n % 10;
+  const mod100 = n % 100;
+  if (mod10 === 1 && mod100 !== 11) return "";
+  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return "а";
+  return "ов";
 }
