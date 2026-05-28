@@ -29,6 +29,11 @@ const TOC = [
   { id: "ox", label: "Десять быков" },
 ];
 
+function scrollToSection(id: string) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 export function Zen() {
   return (
     <ThemedRoot theme={ZEN_THEME}>
@@ -52,7 +57,9 @@ export function Zen() {
 
         <nav className="zen-toc" aria-label="Содержание">
           {TOC.map((t) => (
-            <a key={t.id} href={`#${t.id}`}>{t.label}</a>
+            <button key={t.id} type="button" onClick={() => scrollToSection(t.id)}>
+              {t.label}
+            </button>
           ))}
         </nav>
 

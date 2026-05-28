@@ -898,7 +898,9 @@ a {
   -webkit-backdrop-filter: saturate(140%) blur(8px);
 }
 
-.zen-toc a {
+.zen-toc a,
+.zen-toc button {
+  font-family: var(--font-sans);
   font-size: 0.76rem;
   letter-spacing: 0.04em;
   color: var(--ink-soft);
@@ -908,9 +910,11 @@ a {
   border: 1px solid var(--line);
   transition: color 120ms ease, border-color 120ms ease;
   white-space: nowrap;
+  cursor: pointer;
 }
 
-.zen-toc a:hover {
+.zen-toc a:hover,
+.zen-toc button:hover {
   color: var(--accent);
   border-color: var(--accent-soft);
 }

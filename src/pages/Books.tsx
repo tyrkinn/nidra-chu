@@ -9,6 +9,11 @@ import {
   BOOK_GROUPS,
 } from "../data/books";
 
+function scrollToSection(id: string) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 export function Books() {
   return (
     <ThemedRoot theme={BOOKS_THEME}>
@@ -38,7 +43,9 @@ export function Books() {
 
         <nav className="zen-toc" aria-label="Содержание">
           {BOOK_GROUPS.map((g) => (
-            <a key={g.id} href={`#${g.id}`}>{g.title}</a>
+            <button key={g.id} type="button" onClick={() => scrollToSection(g.id)}>
+              {g.title}
+            </button>
           ))}
         </nav>
 
