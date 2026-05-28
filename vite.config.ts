@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig({
+  base: "/nidra-chu/",
   plugins: [
     react(),
     VitePWA({
@@ -17,7 +18,8 @@ export default defineConfig({
         background_color: "#f5efe6",
         display: "standalone",
         orientation: "portrait",
-        start_url: "/",
+        start_url: "./",
+        scope: "./",
         lang: "ru",
         icons: [
           {
