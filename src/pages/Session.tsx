@@ -5,6 +5,7 @@ import { getSession, type Session as SessionType, type Stage } from "../data/ses
 import { getSectionForSession, type Section } from "../data/sections";
 import { Timer } from "../components/Timer";
 import { ThemedRoot } from "../components/ThemedRoot";
+import { Disclosure } from "../components/Disclosure";
 import { BackIcon, NextIcon, PauseIcon, PlayIcon, PrevIcon } from "../components/Icons";
 
 type Mode = "overview" | "play" | "done";
@@ -110,6 +111,8 @@ function Overview({
           <p>{session.subtitle}</p>
         </div>
       </header>
+
+      <Disclosure label="О практике" details={session.details} />
 
       <div className="section-title">
         <h2>Шаги практики</h2>

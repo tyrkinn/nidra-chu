@@ -716,6 +716,128 @@ a {
   letter-spacing: 0.02em;
 }
 
+/* ====== Disclosure ====== */
+.disclosure {
+  margin-top: 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.disclosure[open] {
+  border-color: var(--accent-soft);
+}
+
+.disclosure summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  text-transform: uppercase;
+  transition: background 160ms ease;
+}
+
+.disclosure summary::-webkit-details-marker {
+  display: none;
+}
+
+.disclosure summary:hover {
+  background: var(--accent-tint);
+}
+
+.disclosure-chevron {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.disclosure-chevron::before,
+.disclosure-chevron::after {
+  content: "";
+  position: absolute;
+  background: var(--accent);
+  border-radius: 1px;
+  transition: transform 200ms ease;
+}
+
+.disclosure-chevron::before {
+  top: 6px;
+  left: 0;
+  right: 0;
+  height: 2px;
+}
+
+.disclosure-chevron::after {
+  top: 0;
+  bottom: 0;
+  left: 6px;
+  width: 2px;
+}
+
+.disclosure[open] .disclosure-chevron::after {
+  transform: scaleY(0);
+}
+
+.disclosure-body {
+  padding: 4px 22px 22px;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  animation: fadeIn 280ms ease both;
+}
+
+.disclosure-body p + p {
+  margin-top: 10px;
+}
+
+.disclosure-h {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  font-weight: 700;
+  margin: 16px 0 8px;
+}
+
+.disclosure-h:first-child {
+  margin-top: 0;
+}
+
+.disclosure-list {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.disclosure-list li {
+  position: relative;
+  padding-left: 18px;
+}
+
+.disclosure-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 8px;
+  height: 1px;
+  background: var(--accent);
+}
+
 .placeholder-card {
   margin-top: 28px;
   padding: 26px 24px;

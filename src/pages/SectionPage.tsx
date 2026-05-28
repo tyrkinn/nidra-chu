@@ -4,6 +4,7 @@ import { getSection } from "../data/sections";
 import { SESSIONS } from "../data/sessions";
 import { SessionCard } from "../components/SessionCard";
 import { ThemedRoot } from "../components/ThemedRoot";
+import { Disclosure } from "../components/Disclosure";
 import { BackIcon } from "../components/Icons";
 
 export function SectionPage() {
@@ -39,6 +40,8 @@ export function SectionPage() {
             <Illustration kind={section.illustration} />
           </div>
         </header>
+
+        <Disclosure label="О разделе" details={section.details} />
 
         {sessions.length > 0 && (
           <>

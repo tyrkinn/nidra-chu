@@ -1,5 +1,14 @@
 import type { IllustrationKind } from "../illustrations";
 
+export type Details = {
+  /** One or more paragraphs (separated by \n\n). */
+  about: string;
+  /** Short outcome statements. */
+  benefits: string[];
+  /** Optional caveats, contraindications, recommendations. */
+  notes?: string;
+};
+
 export type Stage = {
   id: string;
   eyebrow: string;
@@ -15,6 +24,7 @@ export type Session = {
   subtitle: string;
   hero: IllustrationKind;
   stages: Stage[];
+  details: Details;
 };
 
 export const totalSeconds = (s: Session) =>

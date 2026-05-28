@@ -1,9 +1,11 @@
 import { SectionCard } from "../components/SectionCard";
+import { ThemedRoot } from "../components/ThemedRoot";
 import { Illustration } from "../illustrations";
 import { SECTIONS } from "../data/sections";
 
 export function Home() {
   return (
+    <ThemedRoot>
     <div className="container fade-in">
       <header className="home-header">
         <span className="eyebrow">Практики осознанности</span>
@@ -36,5 +38,6 @@ export function Home() {
         <span>Свами Сатьянанда Сарасвати</span>
       </blockquote>
     </div>
+    </ThemedRoot>
   );
 }

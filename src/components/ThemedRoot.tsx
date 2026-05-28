@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from "react";
+import { useEffect, type CSSProperties, type ReactNode } from "react";
 import type { Theme } from "../data/sections";
 import { NEUTRAL_THEME } from "../data/sections";
 
@@ -9,6 +9,15 @@ type Props = {
 
 export function ThemedRoot({ theme, children }: Props) {
   const t = theme ?? NEUTRAL_THEME;
+
+  useEffect(() => {
+    const prev = document.body.style.background;
+    document.body.style.background = t.accentTint;
+    return () => {
+      document.body.style.background = prev;
+    };
+  }, [t.accentTint]);
+
   const style = {
     "--accent": t.accent,
     "--accent-soft": t.accentSoft,
