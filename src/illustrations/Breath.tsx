@@ -12,8 +12,8 @@ export function Breath({ size = "100%", className }: IllustrationProps) {
     >
       <defs>
         <radialGradient id="breathGlow" cx="50%" cy="50%" r="55%">
-          <stop offset="0%" stopColor="#c7a09e" stopOpacity="0.4" />
-          <stop offset="100%" stopColor="#c7a09e" stopOpacity="0" />
+          <stop offset="0%" stopColor="var(--accent-soft)" stopOpacity="0.4" />
+          <stop offset="100%" stopColor="var(--accent-soft)" stopOpacity="0" />
         </radialGradient>
       </defs>
 
@@ -27,7 +27,7 @@ export function Breath({ size = "100%", className }: IllustrationProps) {
       </g>
 
       {/* central glow */}
-      <circle cx="100" cy="100" r="10" fill="#7a6c9b" fillOpacity="0.85" />
+      <circle cx="100" cy="100" r="10" fill="var(--accent)" fillOpacity="0.85" />
 
       {/* directional flow arcs */}
       <g
@@ -44,7 +44,7 @@ export function Breath({ size = "100%", className }: IllustrationProps) {
       </g>
 
       {/* dots */}
-      <g fill="#7a6c9b" fillOpacity="0.6">
+      <g fill="var(--accent)" fillOpacity="0.6">
         <circle cx="100" cy="32" r="2" />
         <circle cx="100" cy="168" r="2" />
         <circle cx="32" cy="100" r="2" />

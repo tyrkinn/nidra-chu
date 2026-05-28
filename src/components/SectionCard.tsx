@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { Illustration } from "../illustrations";
 import type { Section } from "../data/sections";
@@ -7,10 +8,18 @@ export function SectionCard({ section }: { section: Section }) {
     ? "Скоро"
     : `${section.sessionIds.length} практик${pluralEnding(section.sessionIds.length)}`;
 
+  const style = {
+    "--accent": section.theme.accent,
+    "--accent-soft": section.theme.accentSoft,
+    "--accent-tint": section.theme.accentTint,
+    "--accent-glow": section.theme.accentGlow,
+  } as CSSProperties;
+
   return (
     <Link
       to={`/section/${section.id}`}
-      className={`section-tile ${section.comingSoon ? "is-soon" : ""}`}
+      className="section-tile"
+      style={style}
       aria-label={`Раздел: ${section.title}`}
     >
       <div className="section-tile-art" aria-hidden="true">

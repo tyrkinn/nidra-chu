@@ -12,12 +12,12 @@ export function Visualization({ size = "100%", className }: IllustrationProps) {
     >
       <defs>
         <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#c7a09e" stopOpacity="0.55" />
-          <stop offset="100%" stopColor="#7a6c9b" stopOpacity="0.45" />
+          <stop offset="0%" stopColor="var(--accent-soft)" stopOpacity="0.55" />
+          <stop offset="100%" stopColor="var(--accent)" stopOpacity="0.45" />
         </linearGradient>
         <radialGradient id="sun" cx="50%" cy="50%" r="55%">
-          <stop offset="0%" stopColor="#f5e9d8" />
-          <stop offset="100%" stopColor="#f5e9d8" stopOpacity="0" />
+          <stop offset="0%" stopColor="var(--accent-glow)" />
+          <stop offset="100%" stopColor="var(--accent-glow)" stopOpacity="0" />
         </radialGradient>
       </defs>
 
@@ -26,7 +26,7 @@ export function Visualization({ size = "100%", className }: IllustrationProps) {
 
       {/* sun */}
       <circle cx="100" cy="86" r="38" fill="url(#sun)" />
-      <circle cx="100" cy="86" r="14" fill="#f5e9d8" />
+      <circle cx="100" cy="86" r="14" fill="var(--accent-glow)" />
 
       {/* mountains */}
       <g fill="currentColor" fillOpacity="0.5">
@@ -35,7 +35,7 @@ export function Visualization({ size = "100%", className }: IllustrationProps) {
       </g>
 
       {/* water */}
-      <path d="M20 140 L180 140 L180 162 L20 162 Z" fill="#7a6c9b" fillOpacity="0.4" />
+      <path d="M20 140 L180 140 L180 162 L20 162 Z" fill="var(--accent)" fillOpacity="0.4" />
       <g stroke="currentColor" strokeOpacity="0.3" strokeWidth="0.8" fill="none">
         <path d="M30 150 Q60 146 90 150 T170 150" />
         <path d="M30 158 Q60 154 90 158 T170 158" />

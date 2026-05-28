@@ -12,13 +12,13 @@ export function BodyScan({ size = "100%", className }: IllustrationProps) {
     >
       <defs>
         <linearGradient id="scanRay" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#7a6c9b" stopOpacity="0" />
-          <stop offset="50%" stopColor="#c7a09e" stopOpacity="0.6" />
-          <stop offset="100%" stopColor="#7a6c9b" stopOpacity="0" />
+          <stop offset="0%" stopColor="var(--accent)" stopOpacity="0" />
+          <stop offset="50%" stopColor="var(--accent-soft)" stopOpacity="0.6" />
+          <stop offset="100%" stopColor="var(--accent)" stopOpacity="0" />
         </linearGradient>
         <radialGradient id="scanHalo" cx="50%" cy="50%" r="55%">
-          <stop offset="0%" stopColor="#f5e9d8" stopOpacity="0.6" />
-          <stop offset="100%" stopColor="#f5e9d8" stopOpacity="0" />
+          <stop offset="0%" stopColor="var(--accent-glow)" stopOpacity="0.6" />
+          <stop offset="100%" stopColor="var(--accent-glow)" stopOpacity="0" />
         </radialGradient>
       </defs>
 
@@ -46,12 +46,12 @@ export function BodyScan({ size = "100%", className }: IllustrationProps) {
 
       {/* scanning ray */}
       <rect x="40" y="96" width="120" height="8" fill="url(#scanRay)" rx="4" />
-      <g fill="#7a6c9b" fillOpacity="0.7">
+      <g fill="var(--accent)" fillOpacity="0.7">
         <circle cx="100" cy="100" r="2.5" />
       </g>
 
       {/* chakra-like markers */}
-      <g fill="#c7a09e" fillOpacity="0.8">
+      <g fill="var(--accent-soft)" fillOpacity="0.8">
         <circle cx="100" cy="60" r="2" />
         <circle cx="100" cy="80" r="2" />
         <circle cx="100" cy="120" r="2" />

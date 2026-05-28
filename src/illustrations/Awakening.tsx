@@ -12,9 +12,9 @@ export function Awakening({ size = "100%", className }: IllustrationProps) {
     >
       <defs>
         <radialGradient id="dawn" cx="50%" cy="78%" r="60%">
-          <stop offset="0%" stopColor="#f5e9d8" stopOpacity="0.95" />
-          <stop offset="60%" stopColor="#c7a09e" stopOpacity="0.45" />
-          <stop offset="100%" stopColor="#7a6c9b" stopOpacity="0.1" />
+          <stop offset="0%" stopColor="var(--accent-glow)" stopOpacity="0.95" />
+          <stop offset="60%" stopColor="var(--accent-soft)" stopOpacity="0.45" />
+          <stop offset="100%" stopColor="var(--accent)" stopOpacity="0.1" />
         </radialGradient>
       </defs>
 
@@ -26,7 +26,7 @@ export function Awakening({ size = "100%", className }: IllustrationProps) {
       {/* rising sun */}
       <path
         d="M60 138 A40 40 0 0 1 140 138 Z"
-        fill="#f5e9d8"
+        fill="var(--accent-glow)"
         stroke="currentColor"
         strokeOpacity="0.2"
         strokeWidth="0.8"

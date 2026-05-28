@@ -12,12 +12,12 @@ export function Lotus({ size = "100%", className }: IllustrationProps) {
     >
       <defs>
         <radialGradient id="lotusGlow" cx="50%" cy="55%" r="55%">
-          <stop offset="0%" stopColor="#f5e9d8" stopOpacity="0.8" />
-          <stop offset="100%" stopColor="#f5e9d8" stopOpacity="0" />
+          <stop offset="0%" stopColor="var(--accent-glow)" stopOpacity="0.8" />
+          <stop offset="100%" stopColor="var(--accent-glow)" stopOpacity="0" />
         </radialGradient>
         <linearGradient id="petal" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#c7a09e" stopOpacity="0.95" />
-          <stop offset="100%" stopColor="#7a6c9b" stopOpacity="0.95" />
+          <stop offset="0%" stopColor="var(--accent-soft)" stopOpacity="0.95" />
+          <stop offset="100%" stopColor="var(--accent)" stopOpacity="0.95" />
         </linearGradient>
       </defs>
       <circle cx="100" cy="110" r="80" fill="url(#lotusGlow)" />

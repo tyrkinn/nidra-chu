@@ -12,6 +12,13 @@ import { dharana } from "./practices/dharana";
 import { walking } from "./practices/walking";
 import type { Session } from "./types";
 
+export type Theme = {
+  accent: string;
+  accentSoft: string;
+  accentTint: string;
+  accentGlow: string;
+};
+
 export type Section = {
   id: string;
   title: string;
@@ -19,7 +26,15 @@ export type Section = {
   description: string;
   illustration: IllustrationKind;
   sessionIds: string[];
+  theme: Theme;
   comingSoon?: boolean;
+};
+
+export const NEUTRAL_THEME: Theme = {
+  accent: "#5c5870",
+  accentSoft: "#b3aec3",
+  accentTint: "#f5f4f8",
+  accentGlow: "#ffffff",
 };
 
 const ids = (xs: Session[]) => xs.map((s) => s.id);
@@ -33,6 +48,7 @@ export const SECTIONS: Section[] = [
       "Ведомые практики йога-нидры разной длительности — от короткой паузы до полного цикла перед сном.",
     illustration: "moon",
     sessionIds: ids(nidra),
+    theme: { accent: "#8b87c9", accentSoft: "#c4c2e3", accentTint: "#f4f3fb", accentGlow: "#faf9fd" },
   },
   {
     id: "yoga",
@@ -42,6 +58,7 @@ export const SECTIONS: Section[] = [
       "Короткие комплексы и отдельные асаны: пробуждение, мягкая растяжка для спины, баланс и заземление.",
     illustration: "asana",
     sessionIds: ids(yoga),
+    theme: { accent: "#e8a187", accentSoft: "#f2c9b8", accentTint: "#fdf5f1", accentGlow: "#fefaf7" },
   },
   {
     id: "meditation",
@@ -51,6 +68,7 @@ export const SECTIONS: Section[] = [
       "Сидячие практики: наблюдение дыхания, сканирование ощущений, открытое присутствие.",
     illustration: "meditation",
     sessionIds: ids(meditation),
+    theme: { accent: "#95b9a7", accentSoft: "#c4dccf", accentTint: "#f4f8f6", accentGlow: "#f9fbfa" },
   },
   {
     id: "pranayama",
@@ -60,6 +78,7 @@ export const SECTIONS: Section[] = [
       "Дыхательные практики для разных состояний: концентрация, баланс, успокоение перед сном.",
     illustration: "breath",
     sessionIds: ids(pranayama),
+    theme: { accent: "#9bc3cd", accentSoft: "#c8dee4", accentTint: "#f4f9fa", accentGlow: "#f9fcfd" },
   },
   {
     id: "sadhu",
@@ -69,6 +88,7 @@ export const SECTIONS: Section[] = [
       "Протоколы стояния разной длительности, дыхательные опоры и работа с ощущениями.",
     illustration: "sadhuBoard",
     sessionIds: ids(sadhu),
+    theme: { accent: "#d4a574", accentSoft: "#e5c9a8", accentTint: "#faf3e9", accentGlow: "#fcf8f0" },
   },
   {
     id: "metta",
@@ -78,6 +98,7 @@ export const SECTIONS: Section[] = [
       "Развитие сострадания к себе, близким, нейтральным, трудным и ко всем существам.",
     illustration: "sankalpa",
     sessionIds: ids(metta),
+    theme: { accent: "#e4a3b5", accentSoft: "#f0cad4", accentTint: "#fdf3f6", accentGlow: "#fef8fa" },
   },
   {
     id: "dharana",
@@ -87,6 +108,7 @@ export const SECTIONS: Section[] = [
       "Тратака на пламя и концентрация на точке между бровей — практики однонаправленного внимания.",
     illustration: "flame",
     sessionIds: ids(dharana),
+    theme: { accent: "#e8a079", accentSoft: "#f2c8ae", accentTint: "#fdf4ee", accentGlow: "#fef9f4" },
   },
   {
     id: "walking",
@@ -96,6 +118,7 @@ export const SECTIONS: Section[] = [
       "Кинхин, упражнение 5-4-3-2-1 и шинрин-йоку — техники возвращения в настоящее через движение.",
     illustration: "path",
     sessionIds: ids(walking),
+    theme: { accent: "#a3c4a8", accentSoft: "#cee0d1", accentTint: "#f5faf6", accentGlow: "#fafcfa" },
   },
   {
     id: "qigong",
@@ -105,6 +128,7 @@ export const SECTIONS: Section[] = [
       "Мягкие двигательные комплексы: восемь кусков парчи и статическое стояние столбом.",
     illustration: "qigong",
     sessionIds: ids(qigong),
+    theme: { accent: "#93c7b8", accentSoft: "#c1dfd5", accentTint: "#f4f9f7", accentGlow: "#f9fcfb" },
   },
   {
     id: "satsang",
@@ -114,6 +138,7 @@ export const SECTIONS: Section[] = [
       "Короткие фрагменты Йога-сутр, Дао Дэ Цзин и Аштавакра Гиты для размышления и тишины.",
     illustration: "scroll",
     sessionIds: ids(satsang),
+    theme: { accent: "#c9a677", accentSoft: "#dec5a0", accentTint: "#faf4ea", accentGlow: "#fcf8f0" },
   },
   {
     id: "sleep",
@@ -123,6 +148,7 @@ export const SECTIONS: Section[] = [
       "Вечерний скан и полный ритуал засыпания: дыхание, расслабление, благодарность и тишина.",
     illustration: "moon",
     sessionIds: ids(sleep),
+    theme: { accent: "#a09cd1", accentSoft: "#cdcbe5", accentTint: "#f5f4fb", accentGlow: "#faf9fd" },
   },
 ];
 

@@ -12,9 +12,9 @@ export function Sankalpa({ size = "100%", className }: IllustrationProps) {
     >
       <defs>
         <radialGradient id="seedGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#f5e9d8" stopOpacity="0.95" />
-          <stop offset="60%" stopColor="#c7a09e" stopOpacity="0.5" />
-          <stop offset="100%" stopColor="#7a6c9b" stopOpacity="0" />
+          <stop offset="0%" stopColor="var(--accent-glow)" stopOpacity="0.95" />
+          <stop offset="60%" stopColor="var(--accent-soft)" stopOpacity="0.5" />
+          <stop offset="100%" stopColor="var(--accent)" stopOpacity="0" />
         </radialGradient>
       </defs>
 
@@ -35,13 +35,13 @@ export function Sankalpa({ size = "100%", className }: IllustrationProps) {
       {/* heart / seed of intent */}
       <path
         d="M100 122 C82 108 76 96 80 88 C84 80 92 80 100 90 C108 80 116 80 120 88 C124 96 118 108 100 122 Z"
-        fill="#c7a09e"
+        fill="var(--accent-soft)"
         fillOpacity="0.85"
         stroke="currentColor"
         strokeOpacity="0.3"
         strokeWidth="0.6"
       />
-      <circle cx="100" cy="98" r="3.4" fill="#f5e9d8" />
+      <circle cx="100" cy="98" r="3.4" fill="var(--accent-glow)" />
     </svg>
   );
 }

@@ -12,12 +12,12 @@ export function Qigong({ size = "100%", className }: IllustrationProps) {
     >
       <defs>
         <radialGradient id="qiHalo" cx="50%" cy="50%" r="60%">
-          <stop offset="0%" stopColor="#f5e9d8" stopOpacity="0.8" />
-          <stop offset="100%" stopColor="#f5e9d8" stopOpacity="0" />
+          <stop offset="0%" stopColor="var(--accent-glow)" stopOpacity="0.8" />
+          <stop offset="100%" stopColor="var(--accent-glow)" stopOpacity="0" />
         </radialGradient>
         <linearGradient id="qiArc" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#c7a09e" stopOpacity="0.8" />
-          <stop offset="100%" stopColor="#7a6c9b" stopOpacity="0.8" />
+          <stop offset="0%" stopColor="var(--accent-soft)" stopOpacity="0.8" />
+          <stop offset="100%" stopColor="var(--accent)" stopOpacity="0.8" />
         </linearGradient>
       </defs>
 
@@ -41,12 +41,12 @@ export function Qigong({ size = "100%", className }: IllustrationProps) {
 
       {/* figure */}
       {/* head */}
-      <circle cx="100" cy="62" r="9" fill="#c7a09e" fillOpacity="0.7" stroke="currentColor" strokeOpacity="0.4" strokeWidth="0.8" />
+      <circle cx="100" cy="62" r="9" fill="var(--accent-soft)" fillOpacity="0.7" stroke="currentColor" strokeOpacity="0.4" strokeWidth="0.8" />
 
       {/* torso */}
       <path
         d="M92 74 L92 122 L108 122 L108 74 Z"
-        fill="#7a6c9b"
+        fill="var(--accent)"
         fillOpacity="0.4"
         stroke="currentColor"
         strokeOpacity="0.35"
@@ -69,8 +69,8 @@ export function Qigong({ size = "100%", className }: IllustrationProps) {
       </g>
 
       {/* qi ball between hands */}
-      <circle cx="100" cy="116" r="10" fill="#f5e9d8" fillOpacity="0.7" stroke="currentColor" strokeOpacity="0.35" strokeWidth="0.8" />
-      <circle cx="100" cy="116" r="3" fill="#7a6c9b" />
+      <circle cx="100" cy="116" r="10" fill="var(--accent-glow)" fillOpacity="0.7" stroke="currentColor" strokeOpacity="0.35" strokeWidth="0.8" />
+      <circle cx="100" cy="116" r="3" fill="var(--accent)" />
 
       {/* ground */}
       <path d="M50 170 Q100 164 150 170" fill="none" stroke="currentColor" strokeOpacity="0.22" strokeWidth="1" />

@@ -12,12 +12,12 @@ export function Moon({ size = "100%", className }: IllustrationProps) {
     >
       <defs>
         <radialGradient id="nightSky" cx="50%" cy="40%" r="70%">
-          <stop offset="0%" stopColor="#7a6c9b" stopOpacity="0.35" />
-          <stop offset="100%" stopColor="#7a6c9b" stopOpacity="0" />
+          <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.35" />
+          <stop offset="100%" stopColor="var(--accent)" stopOpacity="0" />
         </radialGradient>
         <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#f5e9d8" />
-          <stop offset="100%" stopColor="#f5e9d8" stopOpacity="0" />
+          <stop offset="0%" stopColor="var(--accent-glow)" />
+          <stop offset="100%" stopColor="var(--accent-glow)" stopOpacity="0" />
         </radialGradient>
       </defs>
 
@@ -29,7 +29,7 @@ export function Moon({ size = "100%", className }: IllustrationProps) {
       {/* crescent moon */}
       <path
         d="M118 50 a36 36 0 1 0 0 72 a28 28 0 1 1 0 -72 Z"
-        fill="#f5e9d8"
+        fill="var(--accent-glow)"
         stroke="currentColor"
         strokeOpacity="0.18"
         strokeWidth="0.6"

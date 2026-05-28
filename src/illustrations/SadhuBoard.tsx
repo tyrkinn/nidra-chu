@@ -12,12 +12,12 @@ export function SadhuBoard({ size = "100%", className }: IllustrationProps) {
     >
       <defs>
         <radialGradient id="sadhuHalo" cx="50%" cy="55%" r="55%">
-          <stop offset="0%" stopColor="#f5e9d8" stopOpacity="0.8" />
-          <stop offset="100%" stopColor="#f5e9d8" stopOpacity="0" />
+          <stop offset="0%" stopColor="var(--accent-glow)" stopOpacity="0.8" />
+          <stop offset="100%" stopColor="var(--accent-glow)" stopOpacity="0" />
         </radialGradient>
         <linearGradient id="board" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#c7a09e" stopOpacity="0.5" />
-          <stop offset="100%" stopColor="#7a6c9b" stopOpacity="0.45" />
+          <stop offset="0%" stopColor="var(--accent-soft)" stopOpacity="0.5" />
+          <stop offset="100%" stopColor="var(--accent)" stopOpacity="0.45" />
         </linearGradient>
       </defs>
 
@@ -25,7 +25,7 @@ export function SadhuBoard({ size = "100%", className }: IllustrationProps) {
 
       {/* feet above the board */}
       <g
-        fill="#c7a09e"
+        fill="var(--accent-soft)"
         fillOpacity="0.85"
         stroke="currentColor"
         strokeOpacity="0.35"
@@ -47,7 +47,7 @@ export function SadhuBoard({ size = "100%", className }: IllustrationProps) {
       </g>
 
       {/* light gap between feet and board */}
-      <ellipse cx="100" cy="118" rx="56" ry="6" fill="#f5e9d8" fillOpacity="0.55" />
+      <ellipse cx="100" cy="118" rx="56" ry="6" fill="var(--accent-glow)" fillOpacity="0.55" />
 
       {/* board */}
       <rect x="34" y="124" width="132" height="22" rx="4" fill="url(#board)" />
@@ -64,7 +64,7 @@ export function SadhuBoard({ size = "100%", className }: IllustrationProps) {
       />
 
       {/* nails — rows of dots */}
-      <g fill="#2d2740" fillOpacity="0.85">
+      <g fill="currentColor" fillOpacity="0.85">
         {Array.from({ length: 18 }).map((_, i) => (
           <circle key={`r1-${i}`} cx={42 + i * 7} cy={130} r="1.4" />
         ))}

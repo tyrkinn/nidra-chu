@@ -12,12 +12,12 @@ export function Path({ size = "100%", className }: IllustrationProps) {
     >
       <defs>
         <radialGradient id="pathSky" cx="50%" cy="30%" r="65%">
-          <stop offset="0%" stopColor="#f5e9d8" stopOpacity="0.8" />
-          <stop offset="100%" stopColor="#f5e9d8" stopOpacity="0" />
+          <stop offset="0%" stopColor="var(--accent-glow)" stopOpacity="0.8" />
+          <stop offset="100%" stopColor="var(--accent-glow)" stopOpacity="0" />
         </radialGradient>
         <linearGradient id="pathRoad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#c7a09e" stopOpacity="0.5" />
-          <stop offset="100%" stopColor="#7a6c9b" stopOpacity="0.45" />
+          <stop offset="0%" stopColor="var(--accent-soft)" stopOpacity="0.5" />
+          <stop offset="100%" stopColor="var(--accent)" stopOpacity="0.45" />
         </linearGradient>
       </defs>
 
@@ -35,8 +35,8 @@ export function Path({ size = "100%", className }: IllustrationProps) {
       </g>
 
       {/* sun */}
-      <circle cx="100" cy="98" r="14" fill="#f5e9d8" />
-      <circle cx="100" cy="98" r="22" fill="none" stroke="#f5e9d8" strokeOpacity="0.4" strokeWidth="1" />
+      <circle cx="100" cy="98" r="14" fill="var(--accent-glow)" />
+      <circle cx="100" cy="98" r="22" fill="none" stroke="var(--accent-glow)" strokeOpacity="0.4" strokeWidth="1" />
 
       {/* path receding */}
       <path
@@ -51,7 +51,7 @@ export function Path({ size = "100%", className }: IllustrationProps) {
       />
 
       {/* footprints */}
-      <g fill="#2d2740" fillOpacity="0.6">
+      <g fill="currentColor" fillOpacity="0.6">
         <ellipse cx="86" cy="170" rx="4" ry="6" />
         <ellipse cx="110" cy="156" rx="3.5" ry="5" />
         <ellipse cx="92" cy="142" rx="3" ry="4.5" />

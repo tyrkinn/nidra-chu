@@ -12,21 +12,21 @@ export function Scroll({ size = "100%", className }: IllustrationProps) {
     >
       <defs>
         <radialGradient id="scrollHalo" cx="50%" cy="55%" r="55%">
-          <stop offset="0%" stopColor="#f5e9d8" stopOpacity="0.85" />
-          <stop offset="100%" stopColor="#f5e9d8" stopOpacity="0" />
+          <stop offset="0%" stopColor="var(--accent-glow)" stopOpacity="0.85" />
+          <stop offset="100%" stopColor="var(--accent-glow)" stopOpacity="0" />
         </radialGradient>
         <linearGradient id="parchment" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#f5e9d8" />
-          <stop offset="100%" stopColor="#c7a09e" stopOpacity="0.55" />
+          <stop offset="0%" stopColor="var(--accent-glow)" />
+          <stop offset="100%" stopColor="var(--accent-soft)" stopOpacity="0.55" />
         </linearGradient>
       </defs>
 
       <circle cx="100" cy="110" r="80" fill="url(#scrollHalo)" />
 
       {/* top rod */}
-      <rect x="42" y="56" width="116" height="10" rx="5" fill="#7a6c9b" fillOpacity="0.7" />
-      <circle cx="42" cy="61" r="6" fill="#c7a09e" fillOpacity="0.8" stroke="currentColor" strokeOpacity="0.3" strokeWidth="0.8" />
-      <circle cx="158" cy="61" r="6" fill="#c7a09e" fillOpacity="0.8" stroke="currentColor" strokeOpacity="0.3" strokeWidth="0.8" />
+      <rect x="42" y="56" width="116" height="10" rx="5" fill="var(--accent)" fillOpacity="0.7" />
+      <circle cx="42" cy="61" r="6" fill="var(--accent-soft)" fillOpacity="0.8" stroke="currentColor" strokeOpacity="0.3" strokeWidth="0.8" />
+      <circle cx="158" cy="61" r="6" fill="var(--accent-soft)" fillOpacity="0.8" stroke="currentColor" strokeOpacity="0.3" strokeWidth="0.8" />
 
       {/* parchment body */}
       <path
@@ -48,7 +48,7 @@ export function Scroll({ size = "100%", className }: IllustrationProps) {
 
       {/* center symbol — Om-like circle */}
       <circle cx="100" cy="156" r="8" fill="none" stroke="currentColor" strokeOpacity="0.6" strokeWidth="1.2" />
-      <circle cx="100" cy="156" r="2" fill="#7a6c9b" />
+      <circle cx="100" cy="156" r="2" fill="var(--accent)" />
     </svg>
   );
 }

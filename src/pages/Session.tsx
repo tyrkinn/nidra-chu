@@ -4,6 +4,7 @@ import { Illustration } from "../illustrations";
 import { getSession, type Session as SessionType, type Stage } from "../data/sessions";
 import { getSectionForSession, type Section } from "../data/sections";
 import { Timer } from "../components/Timer";
+import { ThemedRoot } from "../components/ThemedRoot";
 import { BackIcon, NextIcon, PauseIcon, PlayIcon, PrevIcon } from "../components/Icons";
 
 type Mode = "overview" | "play" | "done";
@@ -37,8 +38,9 @@ export function Session() {
     );
   }
 
+  let content;
   if (mode === "overview") {
-    return (
+    content = (
       <Overview
         session={session}
         section={section}
@@ -48,10 +50,8 @@ export function Session() {
         }}
       />
     );
-  }
-
-  if (mode === "done") {
-    return (
+  } else if (mode === "done") {
+    content = (
       <Completion
         session={session}
         section={section}
@@ -62,17 +62,19 @@ export function Session() {
         onOverview={() => setMode("overview")}
       />
     );
+  } else {
+    content = (
+      <Player
+        session={session}
+        stageIndex={stageIndex}
+        onIndexChange={setStageIndex}
+        onExit={() => setMode("overview")}
+        onComplete={() => setMode("done")}
+      />
+    );
   }
 
-  return (
-    <Player
-      session={session}
-      stageIndex={stageIndex}
-      onIndexChange={setStageIndex}
-      onExit={() => setMode("overview")}
-      onComplete={() => setMode("done")}
-    />
-  );
+  return <ThemedRoot theme={section?.theme}>{content}</ThemedRoot>;
 }
 
 // ──────────────────────────────────────────
