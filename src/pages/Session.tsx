@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Illustration } from "../illustrations";
 import { getSession, type Session as SessionType, type Stage } from "../data/sessions";
+import { getSectionForSession, type Section } from "../data/sections";
 import { Timer } from "../components/Timer";
 import { BackIcon, NextIcon, PauseIcon, PlayIcon, PrevIcon } from "../components/Icons";
 
@@ -22,6 +23,7 @@ export function Session() {
   const { id = "" } = useParams();
   const navigate = useNavigate();
   const session = getSession(id);
+  const section = session ? getSectionForSession(session.id) : undefined;
 
   const [mode, setMode] = useState<Mode>("overview");
   const [stageIndex, setStageIndex] = useState(0);
@@ -39,6 +41,7 @@ export function Session() {
     return (
       <Overview
         session={session}
+        section={section}
         onStart={() => {
           setStageIndex(0);
           setMode("play");
@@ -51,6 +54,7 @@ export function Session() {
     return (
       <Completion
         session={session}
+        section={section}
         onRestart={() => {
           setStageIndex(0);
           setMode("play");
@@ -75,13 +79,22 @@ export function Session() {
 // Overview
 // ──────────────────────────────────────────
 
-function Overview({ session, onStart }: { session: SessionType; onStart: () => void }) {
+function Overview({
+  session,
+  section,
+  onStart,
+}: {
+  session: SessionType;
+  section: Section | undefined;
+  onStart: () => void;
+}) {
   const total = session.stages.reduce((sum, s) => sum + s.durationSec, 0);
+  const backHref = section ? `/section/${section.id}` : "/";
 
   return (
     <div className="container fade-in">
       <div className="session-top">
-        <Link to="/section/nidra" className="back-link"><BackIcon /> Назад</Link>
+        <Link to={backHref} className="back-link"><BackIcon /> Назад</Link>
         <span className="session-progress">{fmtMin(total)} · {session.stages.length} шаг{plural(session.stages.length)}</span>
       </div>
 
@@ -90,7 +103,7 @@ function Overview({ session, onStart }: { session: SessionType; onStart: () => v
           <Illustration kind={session.hero} />
         </div>
         <div>
-          <span className="eyebrow">Йога-нидра</span>
+          <span className="eyebrow">{section?.title ?? "Практика"}</span>
           <h1>{session.title}</h1>
           <p>{session.subtitle}</p>
         </div>
@@ -282,17 +295,20 @@ function Player({
 
 function Completion({
   session,
+  section,
   onRestart,
   onOverview,
 }: {
   session: SessionType;
+  section: Section | undefined;
   onRestart: () => void;
   onOverview: () => void;
 }) {
+  const backHref = section ? `/section/${section.id}` : "/";
   return (
     <div className="container fade-in session-page">
       <div className="session-top">
-        <Link to="/section/nidra" className="back-link"><BackIcon /> Назад</Link>
+        <Link to={backHref} className="back-link"><BackIcon /> Назад</Link>
       </div>
       <div className="complete-card">
         <div className="complete-art drift" aria-hidden="true">

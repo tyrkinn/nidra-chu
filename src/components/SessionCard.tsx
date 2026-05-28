@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Illustration } from "../illustrations";
-import type { Session } from "../data/sessions";
+import { totalLabel, type Session } from "../data/sessions";
 
 export function SessionCard({ session }: { session: Session }) {
   return (
@@ -12,7 +12,7 @@ export function SessionCard({ session }: { session: Session }) {
         <h3>{session.title}</h3>
         <p>{session.subtitle}</p>
       </div>
-      <div className="card-meta">{session.totalLabel}</div>
+      <div className="card-meta">{totalLabel(session)}</div>
     </Link>
   );
 }

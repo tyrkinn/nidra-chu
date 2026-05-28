@@ -9,6 +9,10 @@ import { Awakening } from "./Awakening";
 import { Meditation } from "./Meditation";
 import { Asana } from "./Asana";
 import { SadhuBoard } from "./SadhuBoard";
+import { Flame } from "./Flame";
+import { Path } from "./Path";
+import { Scroll } from "./Scroll";
+import { Qigong } from "./Qigong";
 import type { IllustrationKind, IllustrationProps } from "./types";
 
 const MAP = {
@@ -23,6 +27,10 @@ const MAP = {
   meditation: Meditation,
   asana: Asana,
   sadhuBoard: SadhuBoard,
+  flame: Flame,
+  path: Path,
+  scroll: Scroll,
+  qigong: Qigong,
 } as const;
 
 export function Illustration({

@@ -14,4 +14,8 @@ export type IllustrationKind =
   | "awakening"
   | "meditation"
   | "asana"
-  | "sadhuBoard";
+  | "sadhuBoard"
+  | "flame"
+  | "path"
+  | "scroll"
+  | "qigong";
