@@ -1,18 +1,18 @@
-import { SessionCard } from "../components/SessionCard";
+import { SectionCard } from "../components/SectionCard";
 import { Illustration } from "../illustrations";
-import { SESSIONS } from "../data/sessions";
+import { SECTIONS } from "../data/sections";
 
 export function Home() {
   return (
     <div className="container fade-in">
       <header className="home-header">
-        <span className="eyebrow">Нидра · Йога глубокого покоя</span>
+        <span className="eyebrow">Практики осознанности</span>
       </header>
 
       <section className="home-hero">
         <div>
           <h1>Замедлись.<br />Слушай.</h1>
-          <p>Короткие ведомые практики йога-нидры с иллюстрациями для каждого шага.</p>
+          <p>Спокойное место для нидры, йоги, медитаций и других техник присутствия.</p>
         </div>
         <div className="hero-art drift" aria-hidden="true">
           <Illustration kind="lotus" />
@@ -20,18 +20,19 @@ export function Home() {
       </section>
 
       <div className="section-title">
-        <h2>Практики</h2>
-        <span className="eyebrow">{SESSIONS.length} сессии</span>
+        <h2>Разделы</h2>
+        <span className="eyebrow">{SECTIONS.length}</span>
       </div>
 
-      <div className="session-list">
-        {SESSIONS.map((s) => (
-          <SessionCard key={s.id} session={s} />
+      <div className="section-grid">
+        {SECTIONS.map((s) => (
+          <SectionCard key={s.id} section={s} />
         ))}
       </div>
 
       <blockquote className="intro-quote">
-        «Йога-нидра — это сон с искрой осознанности. Тело отдыхает, ум очищается, намерение прорастает».
+        «Осознанность — это не то, что нужно создать. Это присутствие, которое
+        есть уже сейчас, под слоем привычной суеты».
         <span>Свами Сатьянанда Сарасвати</span>
       </blockquote>
     </div>

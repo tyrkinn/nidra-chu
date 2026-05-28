@@ -6,6 +6,9 @@ import { Sankalpa } from "./Sankalpa";
 import { Visualization } from "./Visualization";
 import { Moon } from "./Moon";
 import { Awakening } from "./Awakening";
+import { Meditation } from "./Meditation";
+import { Asana } from "./Asana";
+import { SadhuBoard } from "./SadhuBoard";
 import type { IllustrationKind, IllustrationProps } from "./types";
 
 const MAP = {
@@ -17,6 +20,9 @@ const MAP = {
   visualization: Visualization,
   moon: Moon,
   awakening: Awakening,
+  meditation: Meditation,
+  asana: Asana,
+  sadhuBoard: SadhuBoard,
 } as const;
 
 export function Illustration({

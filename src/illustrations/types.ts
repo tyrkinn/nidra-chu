@@ -11,4 +11,7 @@ export type IllustrationKind =
   | "sankalpa"
   | "visualization"
   | "moon"
-  | "awakening";
+  | "awakening"
+  | "meditation"
+  | "asana"
+  | "sadhuBoard";
