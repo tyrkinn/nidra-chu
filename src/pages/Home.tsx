@@ -22,17 +22,31 @@ export function Home() {
         </div>
       </section>
 
-      <Link to="/zen" className="home-zen-cta">
-        <div className="home-zen-cta-art" aria-hidden="true">
-          <Illustration kind="enso" />
-        </div>
-        <div className="home-zen-cta-body">
-          <span>Теория</span>
-          <h3>Дзен</h3>
-          <p>История, школы, тексты и дорожная карта для тех, кто хочет глубже.</p>
-        </div>
-        <div className="home-zen-cta-arrow" aria-hidden="true">→</div>
-      </Link>
+      <div className="home-theory-grid">
+        <Link to="/zen" className="home-zen-cta theme-zen">
+          <div className="home-zen-cta-art" aria-hidden="true">
+            <Illustration kind="enso" />
+          </div>
+          <div className="home-zen-cta-body">
+            <span>Теория</span>
+            <h3>Дзен</h3>
+            <p>История, школы, тексты, дорожная карта.</p>
+          </div>
+          <div className="home-zen-cta-arrow" aria-hidden="true">→</div>
+        </Link>
+
+        <Link to="/books" className="home-zen-cta theme-books">
+          <div className="home-zen-cta-art" aria-hidden="true">
+            <Illustration kind="book" />
+          </div>
+          <div className="home-zen-cta-body">
+            <span>Книжная полка</span>
+            <h3>Книги, которые будят</h3>
+            <p>30 книг, после которых неудобно жить как раньше.</p>
+          </div>
+          <div className="home-zen-cta-arrow" aria-hidden="true">→</div>
+        </Link>
+      </div>
 
       <div className="section-title">
         <h2>Разделы</h2>

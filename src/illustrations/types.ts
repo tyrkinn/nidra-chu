@@ -19,4 +19,5 @@ export type IllustrationKind =
   | "path"
   | "scroll"
   | "qigong"
-  | "enso";
+  | "enso"
+  | "book";

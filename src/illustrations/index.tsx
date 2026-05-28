@@ -14,6 +14,7 @@ import { Path } from "./Path";
 import { Scroll } from "./Scroll";
 import { Qigong } from "./Qigong";
 import { Enso } from "./Enso";
+import { Book } from "./Book";
 import type { IllustrationKind, IllustrationProps } from "./types";
 
 const MAP = {
@@ -33,6 +34,7 @@ const MAP = {
   scroll: Scroll,
   qigong: Qigong,
   enso: Enso,
+  book: Book,
 } as const;
 
 export function Illustration({
