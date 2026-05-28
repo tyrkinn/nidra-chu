@@ -18,4 +18,5 @@ export type IllustrationKind =
   | "flame"
   | "path"
   | "scroll"
-  | "qigong";
+  | "qigong"
+  | "enso";

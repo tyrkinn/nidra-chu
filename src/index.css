@@ -838,6 +838,679 @@ a {
   background: var(--accent);
 }
 
+/* ====== Zen theory page ====== */
+.zen-page {
+  padding-bottom: 80px;
+}
+
+.zen-hero {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 22px;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  margin-top: 8px;
+}
+
+.zen-hero-art {
+  width: 140px;
+  height: 140px;
+  color: var(--accent);
+}
+
+.zen-hero h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 7vw, 3rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-top: 4px;
+}
+
+.zen-hero-sub {
+  color: var(--ink-soft);
+  margin-top: 8px;
+  font-size: 0.92rem;
+  font-style: italic;
+  font-family: var(--font-serif);
+}
+
+@media (max-width: 480px) {
+  .zen-hero { grid-template-columns: 100px 1fr; padding: 22px 18px; }
+  .zen-hero-art { width: 100px; height: 100px; }
+}
+
+.zen-toc {
+  position: sticky;
+  top: calc(8px + var(--safe-top));
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 10px;
+  background: var(--accent-tint);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  margin: 22px 0 30px;
+  backdrop-filter: saturate(140%) blur(8px);
+  -webkit-backdrop-filter: saturate(140%) blur(8px);
+}
+
+.zen-toc a {
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  transition: color 120ms ease, border-color 120ms ease;
+  white-space: nowrap;
+}
+
+.zen-toc a:hover {
+  color: var(--accent);
+  border-color: var(--accent-soft);
+}
+
+.zen-section {
+  margin: 50px 0 0;
+  scroll-margin-top: 90px;
+}
+
+.zen-section > h2 {
+  font-family: var(--font-serif);
+  font-size: 1.7rem;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: var(--ink);
+}
+
+.zen-section-lede {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+  max-width: 56ch;
+}
+
+.zen-section > p + p {
+  margin-top: 12px;
+}
+
+/* ─── Lineage ─── */
+.zen-lineage {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.zen-lineage li {
+  position: relative;
+  padding: 18px 18px 18px 22px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  border-left: 2px solid var(--accent);
+}
+
+.zen-lineage-era {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.zen-lineage h3 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.zen-lineage p {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+/* ─── Four statements ─── */
+.zen-four-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+@media (max-width: 480px) {
+  .zen-four-grid { grid-template-columns: 1fr; }
+}
+
+.zen-four {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 22px 20px;
+  text-align: center;
+}
+
+.zen-four-cjk {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.zen-four-romaji {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.zen-four h3 {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.zen-four p {
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+/* ─── Schools ─── */
+.zen-schools {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.zen-school {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 20px 22px;
+}
+
+.zen-school h3 {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.zen-school dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 8px 14px;
+  font-size: 0.9rem;
+}
+
+.zen-school dt {
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  font-weight: 600;
+  padding-top: 2px;
+}
+
+.zen-school dd {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+@media (max-width: 480px) {
+  .zen-school dl { grid-template-columns: 1fr; gap: 4px 0; }
+  .zen-school dt { margin-top: 8px; }
+}
+
+/* ─── Practices ─── */
+.zen-practices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+@media (max-width: 480px) {
+  .zen-practices { grid-template-columns: 1fr; }
+}
+
+.zen-practice {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 18px 18px 20px;
+}
+
+.zen-practice h3 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.zen-practice-meaning {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin: 4px 0 10px;
+}
+
+.zen-practice p {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+/* ─── Glossary ─── */
+.zen-glossary-group {
+  margin-bottom: 28px;
+}
+
+.zen-glossary-h {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin: 24px 0 12px;
+}
+
+.zen-term-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+@media (max-width: 420px) {
+  .zen-term-grid { grid-template-columns: 1fr; }
+}
+
+.zen-term {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+
+.zen-term-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.zen-term-cjk {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+
+.zen-term-romaji {
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.zen-term-ru {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.zen-term p {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  line-height: 1.45;
+}
+
+/* ─── Roadmap ─── */
+.zen-roadmap {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  counter-reset: zen-step;
+}
+
+.zen-roadmap-step {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  align-items: start;
+}
+
+.zen-roadmap-num {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--surface);
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 500;
+  display: grid;
+  place-items: center;
+}
+
+.zen-roadmap-step h3 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.zen-roadmap-step p {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+/* ─── Texts ─── */
+.zen-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.zen-text {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 20px 22px;
+}
+
+.zen-text header {
+  margin-bottom: 10px;
+}
+
+.zen-text h3 {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.zen-text-meta {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.zen-text-desc {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.zen-text-disclosure {
+  margin-top: 14px;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+
+.zen-text-disclosure summary {
+  list-style: none;
+  cursor: pointer;
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  padding: 6px 0;
+}
+
+.zen-text-disclosure summary::-webkit-details-marker {
+  display: none;
+}
+
+.zen-text-disclosure summary::before {
+  content: "+ ";
+  display: inline-block;
+  margin-right: 2px;
+}
+
+.zen-text-disclosure[open] summary::before {
+  content: "− ";
+}
+
+.zen-text blockquote {
+  margin: 12px 0 0;
+  padding: 0 0 0 18px;
+  border-left: 2px solid var(--accent);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--ink);
+  line-height: 1.65;
+}
+
+.zen-text blockquote p + p {
+  margin-top: 10px;
+}
+
+/* ─── Koans ─── */
+.zen-koans {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.zen-koan {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 20px 22px;
+}
+
+.zen-koan header {
+  margin-bottom: 12px;
+}
+
+.zen-koan h3 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.zen-koan-source {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.zen-koan blockquote {
+  margin: 0;
+  padding: 14px 18px;
+  background: var(--accent-tint);
+  border-radius: 12px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.zen-koan-hint {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin-top: 10px;
+  line-height: 1.55;
+}
+
+/* ─── Ten ox ─── */
+.zen-ox {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.zen-ox-stage {
+  display: grid;
+  grid-template-columns: 36px 48px 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+
+.zen-ox-num {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.zen-ox-cjk {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  color: var(--ink);
+  text-align: center;
+  line-height: 1;
+}
+
+.zen-ox-body h3 {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.zen-ox-body p {
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* ─── Footer ─── */
+.zen-footer {
+  margin-top: 60px;
+  padding: 32px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--line);
+}
+
+.zen-footer p {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--ink);
+  max-width: 36ch;
+}
+
+.zen-footer span {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+
+/* ====== Home — Zen CTA ====== */
+.home-zen-cta {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 22px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  margin-top: 14px;
+  text-align: left;
+  transition: transform 160ms ease, border-color 160ms ease;
+}
+
+.home-zen-cta:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent);
+}
+
+.home-zen-cta-art {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  color: #3c3a3a;
+}
+
+.home-zen-cta-body {
+  flex: 1;
+}
+
+.home-zen-cta-body span {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  font-weight: 600;
+}
+
+.home-zen-cta-body h3 {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.home-zen-cta-body p {
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+.home-zen-cta-arrow {
+  color: var(--ink-muted);
+  font-size: 1.4rem;
+  font-family: var(--font-serif);
+}
+
 .placeholder-card {
   margin-top: 28px;
   padding: 26px 24px;

@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Session } from "./pages/Session";
 import { SectionPage } from "./pages/SectionPage";
+import { Zen } from "./pages/Zen";
 
 export function App() {
   return (
@@ -10,6 +11,7 @@ export function App() {
         <Route path="/" element={<Home />} />
         <Route path="/section/:id" element={<SectionPage />} />
         <Route path="/s/:id" element={<Session />} />
+        <Route path="/zen" element={<Zen />} />
         <Route path="*" element={<Home />} />
       </Routes>
     </div>

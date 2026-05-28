@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { SectionCard } from "../components/SectionCard";
 import { ThemedRoot } from "../components/ThemedRoot";
 import { Illustration } from "../illustrations";
@@ -20,6 +21,18 @@ export function Home() {
           <Illustration kind="lotus" />
         </div>
       </section>
+
+      <Link to="/zen" className="home-zen-cta">
+        <div className="home-zen-cta-art" aria-hidden="true">
+          <Illustration kind="enso" />
+        </div>
+        <div className="home-zen-cta-body">
+          <span>Теория</span>
+          <h3>Дзен</h3>
+          <p>История, школы, тексты и дорожная карта для тех, кто хочет глубже.</p>
+        </div>
+        <div className="home-zen-cta-arrow" aria-hidden="true">→</div>
+      </Link>
 
       <div className="section-title">
         <h2>Разделы</h2>
