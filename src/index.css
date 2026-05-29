@@ -1692,6 +1692,34 @@ a {
   50% { transform: translateY(-6px); }
 }
 
+/* ====== Breathing visualizations ====== */
+
+/* 4-7-8: vessel fill. Cycle 19s = 4 (rise) + 7 (hold) + 8 (fall) */
+.v478-fill {
+  transform-origin: center;
+  animation: v478-fill 19s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+@keyframes v478-fill {
+  0%   { transform: translateY(120px); }   /* empty */
+  21%  { transform: translateY(0); }       /* full at 4/19 */
+  58%  { transform: translateY(0); }       /* hold until 11/19 */
+  100% { transform: translateY(120px); }   /* slowly empties to 19/19 */
+}
+
+.v478-spark {
+  transform-origin: 100px 68px;
+  animation: v478-spark 19s ease-in-out infinite;
+  opacity: 0;
+}
+
+@keyframes v478-spark {
+  0%, 21%  { opacity: 0; transform: scale(0.6); }
+  30%      { opacity: 0.9; transform: scale(1); }
+  58%      { opacity: 0.9; transform: scale(1.1); }
+  100%     { opacity: 0; transform: scale(0.6); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

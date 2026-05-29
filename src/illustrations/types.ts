@@ -20,4 +20,9 @@ export type IllustrationKind =
   | "scroll"
   | "qigong"
   | "enso"
-  | "book";
+  | "book"
+  | "boxBreath"
+  | "nadiStreams"
+  | "vessel478"
+  | "bhramariRings"
+  | "oceanUjjayi";

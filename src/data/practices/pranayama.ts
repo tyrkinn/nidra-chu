@@ -5,7 +5,7 @@ export const pranayama: Session[] = [
     id: "prana-box",
     title: "Квадратное дыхание",
     subtitle: "Сама-вритти 4-4-4-4 — баланс и фокус",
-    hero: "breath",
+    hero: "boxBreath",
     stages: [
       {
         id: "posture",
@@ -28,7 +28,7 @@ export const pranayama: Session[] = [
         eyebrow: "Шаг 3",
         title: "Квадрат 4-4-4-4",
         body: "Вдох — счёт до 4. Задержка — 4. Выдох — 4. Задержка — 4. Повторяйте цикл, удерживая внимание на счёте. Если сбились, начните заново.",
-        illustration: "breath",
+        illustration: "boxBreath",
         durationSec: 300,
       },
       {
@@ -55,7 +55,7 @@ export const pranayama: Session[] = [
     id: "prana-nadi",
     title: "Нади Шодхана",
     subtitle: "Попеременное дыхание ноздрями для очищения",
-    hero: "breath",
+    hero: "nadiStreams",
     stages: [
       {
         id: "posture",
@@ -78,7 +78,7 @@ export const pranayama: Session[] = [
         eyebrow: "Шаг 3",
         title: "Основная практика",
         body: "Продолжайте попеременное дыхание ровно и спокойно. Вдох и выдох равной длины. Если комфортно — добавьте короткую задержку после вдоха.",
-        illustration: "breath",
+        illustration: "nadiStreams",
         durationSec: 360,
       },
       {
@@ -106,7 +106,7 @@ export const pranayama: Session[] = [
     id: "prana-478",
     title: "Дыхание 4-7-8 перед сном",
     subtitle: "Успокаивает нервную систему",
-    hero: "moon",
+    hero: "vessel478",
     stages: [
       {
         id: "lie",
@@ -129,7 +129,7 @@ export const pranayama: Session[] = [
         eyebrow: "Шаг 3",
         title: "Четыре цикла",
         body: "Выполните четыре полных цикла подряд, спокойно и без напряжения. Длинный выдох — главное: он включает парасимпатическую систему.",
-        illustration: "breath",
+        illustration: "vessel478",
         durationSec: 180,
       },
       {
@@ -158,7 +158,7 @@ export const pranayama: Session[] = [
     id: "prana-bhramari",
     title: "Бхрамари — жужжащее дыхание",
     subtitle: "Длинный выдох с гудением для нервной системы",
-    hero: "breath",
+    hero: "bhramariRings",
     stages: [
       {
         id: "posture",
@@ -181,7 +181,7 @@ export const pranayama: Session[] = [
         eyebrow: "Шаг 3",
         title: "Гудение",
         body: "Сделайте полный вдох через нос. На выдохе мягко гудите со сжатыми губами — звук «ммм», как пчела. Выдох длинный, ровный. После — естественный вдох и снова гудение. Сделайте 8 циклов.",
-        illustration: "breath",
+        illustration: "bhramariRings",
         durationSec: 360,
       },
       {
@@ -219,7 +219,7 @@ export const pranayama: Session[] = [
     id: "prana-ujjayi",
     title: "Уджайи — победоносное дыхание",
     subtitle: "Дыхание «звука океана» для концентрации",
-    hero: "breath",
+    hero: "oceanUjjayi",
     stages: [
       {
         id: "posture",
@@ -242,7 +242,7 @@ export const pranayama: Session[] = [
         eyebrow: "Шаг 3",
         title: "Полное дыхание",
         body: "Дышите носом, удерживая лёгкое сужение в голосовой щели и на вдохе, и на выдохе. Звук как тихий шум моря или ветра. Вдох 4 счёта, выдох 6 счётов. Не форсируйте.",
-        illustration: "breath",
+        illustration: "oceanUjjayi",
         durationSec: 360,
       },
       {

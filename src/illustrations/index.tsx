@@ -15,6 +15,11 @@ import { Scroll } from "./Scroll";
 import { Qigong } from "./Qigong";
 import { Enso } from "./Enso";
 import { Book } from "./Book";
+import { BoxBreath } from "../components/breathing/BoxBreath";
+import { NadiStreams } from "../components/breathing/NadiStreams";
+import { Vessel478 } from "../components/breathing/Vessel478";
+import { BhramariRings } from "../components/breathing/BhramariRings";
+import { OceanUjjayi } from "../components/breathing/OceanUjjayi";
 import type { IllustrationKind, IllustrationProps } from "./types";
 
 const MAP = {
@@ -35,6 +40,11 @@ const MAP = {
   qigong: Qigong,
   enso: Enso,
   book: Book,
+  boxBreath: BoxBreath,
+  nadiStreams: NadiStreams,
+  vessel478: Vessel478,
+  bhramariRings: BhramariRings,
+  oceanUjjayi: OceanUjjayi,
 } as const;
 
 export function Illustration({
